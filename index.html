@@ -40,6 +40,12 @@
           table.rows[i].insertCell();
         }
       }
+
+      function removeRow() {
+        var table = document.getElementById("grid");
+        var rowCount = table.rows.length;
+        table.deleteRow(rowCount - 1);
+      }
     </script>
   </head>
   <body>
@@ -54,5 +60,6 @@
     </table>
     <button onclick="addRow()">Add Row</button>
     <button onclick="addColumn()">Add Column</button>
+    <button onclick="removeRow()">Remove Row</button>
   </body>
 </html>
