@@ -46,6 +46,14 @@
         var rowCount = table.rows.length;
         table.deleteRow(rowCount - 1);
       }
+
+      function removeColumn() {
+          var table = document.getElementById("grid");
+          var rowCount = table.rows.length;
+          for (let i = 0; i < rowCount; i++) {
+            table.rows[i].deleteCell(-1);
+        }
+      }
     </script>
   </head>
   <body>
@@ -61,5 +69,6 @@
     <button onclick="addRow()">Add Row</button>
     <button onclick="addColumn()">Add Column</button>
     <button onclick="removeRow()">Remove Row</button>
+    <button onclick="removeColumn()">Remove Column</button>
   </body>
 </html>
