@@ -46,6 +46,10 @@
         var rowCount = table.rows.length;
         table.deleteRow(rowCount - 1);
       }
+      function getColor() {
+        var colorSelect = document.getElementById("colorSelect");
+        var selectedColor = colorSelect.value;
+      }
     </script>
   </head>
   <body>
@@ -61,5 +65,16 @@
     <button onclick="addRow()">Add Row</button>
     <button onclick="addColumn()">Add Column</button>
     <button onclick="removeRow()">Remove Row</button>
+
+    <label for="colorSelect">Select a color:</label>
+    <select id="colorSelect">
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="orange">Orange</option>
+    </select>
+
+    <button onclick="getColor()">Get Color</button>
   </body>
 </html>
