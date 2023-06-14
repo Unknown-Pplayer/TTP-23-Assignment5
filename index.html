@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 5px;
+        height: 30px;
+      }
+      button {
+        margin-top: 10px;
+      }
+    </style>
+    <script>
+      function addRow() {
+        var table = document.getElementById("grid");
+        var newRow = table.insertRow();
+        var cells = newRow.insertCell();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Grid Table</h1>
+    <table id="grid">
+      <tr>
+        <th>Header1</th>
+      </tr>
+      <tr>
+        <td>Row1</td>
+      </tr>
+    </table>
+    <button onclick="addRow()">Add Row</button>
+  </body>
+</html>
