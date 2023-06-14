@@ -13,17 +13,32 @@
       td {
         border: 1px solid black;
         padding: 5px;
-        height: 30px;
       }
       button {
         margin-top: 10px;
+      }
+      th,
+      td {
+        height: 30px;
+        width: 70px;
       }
     </style>
     <script>
       function addRow() {
         var table = document.getElementById("grid");
         var newRow = table.insertRow();
-        var cells = newRow.insertCell();
+        var columnsCount = table.rows[0].cells.length;
+
+        for (let i = 0; i < columnsCount; i++) {
+          newRow.insertCell();
+        }
+      }
+      function addColumn() {
+        var table = document.getElementById("grid");
+        var rowsCount = table.rows.length;
+        for (let i = 0; i < rowsCount; i++) {
+          table.rows[i].insertCell();
+        }
       }
     </script>
   </head>
@@ -38,5 +53,6 @@
       </tr>
     </table>
     <button onclick="addRow()">Add Row</button>
+    <button onclick="addColumn()">Add Column</button>
   </body>
 </html>
