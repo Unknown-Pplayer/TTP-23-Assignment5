@@ -58,14 +58,13 @@
           table.rows[i].deleteCell(-1);
         }
       }
-
       function getColor() {
         var colorSelect = document.getElementById("colorSelect");
         selectedColor = colorSelect.value;
       }
 
       function changeCellColor() {
-        this.style.backgroundColor = selectedColor;
+        this.style.backgroundColor = selectedColor; // Set the background color of the clicked cell
       }
     </script>
   </head>
@@ -76,7 +75,7 @@
         <th>Header1</th>
       </tr>
       <tr>
-        <td>Row1</td>
+        <td onclick="changeCellColor()">Row1</td>
       </tr>
     </table>
     <button onclick="addRow()">Add Row</button>
