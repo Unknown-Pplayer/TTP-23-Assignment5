@@ -67,6 +67,18 @@
         this.style.backgroundColor = selectedColor; // Set the background color of the clicked cell
       }
 
+      function fillAll() {
+        var table = document.getElementById("grid");
+        var rows = table.rows;
+        for (let i = 0; i < rows.length; i++) {
+          var cells = rows[i].cells;
+          for (let j = 0; j < cells.length; j++) {
+            var cell = cells[j];
+            cell.style.backgroundColor = selectedColor;
+          }
+        }
+      }
+
       function clearCells() {
         var table = document.getElementById("grid");
         var rows = table.rows;
@@ -94,6 +106,7 @@
     <button onclick="addColumn()">Add Column</button>
     <button onclick="removeRow()">Remove Row</button>
     <button onclick="removeColumn()">Remove Column</button>
+    <button onclick="fillAll()">Fill All</button>
     <button onclick="clearCells()">Clear Cells</button>
 
     <label for="colorSelect">Select a color:</label>
