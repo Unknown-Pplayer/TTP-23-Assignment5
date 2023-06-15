@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grid</title>
+    
     <style>
       table {
         border-collapse: collapse;
@@ -27,6 +28,8 @@
     <script>
       var selectedColor = "";
       var isMouseDown = false;
+
+      //add rows to the grid
       function addRow() {
         var table = document.getElementById("grid");
         var newRow = table.insertRow();
@@ -37,6 +40,8 @@
           cell.onclick = changeCellColor;
         }
       }
+
+      //add columns to the grid
       function addColumn() {
         var table = document.getElementById("grid");
         var rowsCount = table.rows.length;
@@ -46,12 +51,14 @@
         }
       }
 
+      //remove rows from the grid
       function removeRow() {
         var table = document.getElementById("grid");
         var rowCount = table.rows.length;
         table.deleteRow(rowCount - 1);
       }
 
+      //remove columns from the grid
       function removeColumn() {
         var table = document.getElementById("grid");
         var rowCount = table.rows.length;
@@ -59,15 +66,20 @@
           table.rows[i].deleteCell(-1);
         }
       }
+
+      //select a color from a dropdown menu of colors
       function getColor() {
         var colorSelect = document.getElementById("colorSelect");
         selectedColor = colorSelect.value;
       }
 
+
+      //click on a single cell, changing its color to the currently selected color
       function changeCellColor() {
         this.style.backgroundColor = selectedColor; // Set the background color of the clicked cell
       }
 
+      //fill all cells with the currently selected color
       function fillAll() {
         var table = document.getElementById("grid");
         var rows = table.rows;
@@ -80,6 +92,7 @@
         }
       }
 
+      //clear all cells/restore all cells to their original/initial color
       function clearCells() {
         var table = document.getElementById("grid");
         var rows = table.rows;
@@ -92,6 +105,8 @@
         }
       }
 
+
+      //fill all uncolored cells with the currently selected color
       function fillUncolored() {
         var table = document.getElementById("grid");
         var rows = table.rows;
@@ -105,6 +120,9 @@
           }
         }
       }
+
+      // //click and hold (mouseover) from a single cell (start) to a different cell (end) such that all 
+      // affected/hovered-over cells from start to end change to the currently selected color
       function startColoring() {
         isMouseDown = true;
       }
@@ -113,6 +131,7 @@
         isMouseDown = false;
       }
 
+      
       function colorCellsOnMove(event) {
         if (isMouseDown) {
           var target = event.target;
@@ -122,6 +141,7 @@
     </script>
   </head>
   <body>
+    <h4>By Victor Noel, Xu Wang, Hesham Sharafaldin</h4>
     <h1>Grid Table</h1>
     <table
       id="grid"
@@ -129,11 +149,11 @@
       onmouseup="stopColoring()"
       onmouseover="colorCellsOnMove(event)"
     >
+      <thead>
+        <th onclick="event.target.style.backgroundColor = selectedColor"></th>
+      </thead>
       <tr>
-        <th>Header1</th>
-      </tr>
-      <tr>
-        <td onclick="changeCellColor()">Row1</td>
+        <td onclick="onclick=event.target.style.backgroundColor = selectedColor"></td>
       </tr>
     </table>
     <button onclick="addRow()">Add Row</button>
@@ -146,6 +166,7 @@
 
     <label for="colorSelect">Select a color:</label>
     <select id="colorSelect" onchange="getColor()">
+      <option value="null">---</option>
       <option value="red">Red</option>
       <option value="green">Green</option>
       <option value="blue">Blue</option>
