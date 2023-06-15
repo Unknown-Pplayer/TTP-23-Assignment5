@@ -26,6 +26,7 @@
     </style>
     <script>
       var selectedColor = "";
+      var isMouseDown = false;
       function addRow() {
         var table = document.getElementById("grid");
         var newRow = table.insertRow();
@@ -104,12 +105,31 @@
           }
         }
       }
-    
+      function startColoring() {
+        isMouseDown = true;
+      }
+
+      function stopColoring() {
+        isMouseDown = false;
+      }
+
+      function colorCellsOnMove(event) {
+        if (isMouseDown) {
+          var target = event.target;
+          target.style.backgroundColor = selectedColor;
+        }
+      }
     </script>
   </head>
   <body>
     <h1>Grid Table</h1>
-    <table id="grid">
+    <table
+      id="grid"
+      onmousedown="startColoring()"
+      onmouseup="stopColoring()"
+      onmouseover="colorCellsOnMove(event)"
+    >
+      >
       <tr>
         <th>Header1</th>
       </tr>
