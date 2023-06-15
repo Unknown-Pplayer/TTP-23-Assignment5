@@ -21,23 +21,27 @@
       td {
         height: 30px;
         width: 70px;
+        cursor: pointer;
       }
     </style>
     <script>
+      var selectedColor = "";
       function addRow() {
         var table = document.getElementById("grid");
         var newRow = table.insertRow();
         var columnsCount = table.rows[0].cells.length;
 
         for (let i = 0; i < columnsCount; i++) {
-          newRow.insertCell();
+          var cell = newRow.insertCell();
+          cell.onclick = changeCellColor;
         }
       }
       function addColumn() {
         var table = document.getElementById("grid");
         var rowsCount = table.rows.length;
         for (let i = 0; i < rowsCount; i++) {
-          table.rows[i].insertCell();
+          var cell = table.rows[i].insertCell();
+          cell.onclick = changeCellColor;
         }
       }
 
@@ -48,11 +52,20 @@
       }
 
       function removeColumn() {
-          var table = document.getElementById("grid");
-          var rowCount = table.rows.length;
-          for (let i = 0; i < rowCount; i++) {
-            table.rows[i].deleteCell(-1);
+        var table = document.getElementById("grid");
+        var rowCount = table.rows.length;
+        for (let i = 0; i < rowCount; i++) {
+          table.rows[i].deleteCell(-1);
         }
+      }
+
+      function getColor() {
+        var colorSelect = document.getElementById("colorSelect");
+        selectedColor = colorSelect.value;
+      }
+
+      function changeCellColor() {
+        this.style.backgroundColor = selectedColor;
       }
     </script>
   </head>
@@ -70,5 +83,14 @@
     <button onclick="addColumn()">Add Column</button>
     <button onclick="removeRow()">Remove Row</button>
     <button onclick="removeColumn()">Remove Column</button>
+
+    <label for="colorSelect">Select a color:</label>
+    <select id="colorSelect" onchange="getColor()">
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="orange">Orange</option>
+    </select>
   </body>
 </html>
